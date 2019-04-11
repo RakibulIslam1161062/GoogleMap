@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BusList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/taranga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taranga" />
+
+        <Button
+            android:id="@+id/baishakhi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Baishakhi" />
+
+        <Button
+            android:id="@+id/choitali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choitali" />
+
+        <Button
+            android:id="@+id/ishakha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ishakha" />
+
+        <Button
+            android:id="@+id/hemanto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hemanto" />
+
+        <Button
+            android:id="@+id/bosonto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bosonto" />
+
+        <Button
+            android:id="@+id/shrabon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shrabon" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </LinearLayout>
+</ScrollView>
