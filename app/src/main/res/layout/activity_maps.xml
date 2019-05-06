@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MapsActivity">
 
 <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -12,17 +13,41 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
+
     android:scrollbars= "vertical"
     class="com.google.android.gms.maps.SupportMapFragment"/>
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm Destination"
+
+        android:layout_marginTop="450dp"
+
+        android:text="Confirm" />
+
+
+    <Button
+        android:id="@+id/StopAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="450dp"
+        android:onClick="stopService"
+        android:text="StopAlarm" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginTop="1dp"
-        android:layout_marginLeft="100dp"
+        android:id="@+id/textview"
+        android:text="Click on a map location "
+        android:textSize="25dp"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:layout_marginLeft="30dp"
+
+
+
         />
 
 

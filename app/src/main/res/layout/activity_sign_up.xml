@@ -5,6 +5,7 @@
     android:id="@+id/submit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     android:orientation="vertical"
     tools:context=".SignUp">
 
@@ -12,22 +13,45 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+
         android:layout_marginBottom="0dp"
 
+
         android:inputType="textPersonName"
-        android:text=" Name"
+       android:hint="Name"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:ems="10"
+
+
+
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="#FFF"
 
         />
+
+
 
     <EditText
         android:id="@+id/dept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawablePadding="12dp"
 
+        android:ems="10"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="#FFF"
 
         android:inputType="textPersonName"
-        android:text="Department"
+        android:hint="Department"
          />
 
     <EditText
@@ -35,44 +59,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:ems="10"
 
-        android:text=" User Name" />.
+
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="#FFF"
+
+        android:hint="User name" />.
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Password" />
 
     <EditText
         android:id="@+id/pswd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+
+
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="#FFF"
         />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Re-type Password" />
+
 
     <EditText
         android:id="@+id/pswd2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+
+
+
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="#FFF"
+        android:hint="Re-type Password"
+
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/background_signup"
+        android:padding="16dp"
         android:text="Submit"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="18sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

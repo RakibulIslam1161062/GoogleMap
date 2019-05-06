@@ -3,78 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/g3"
+    android:padding="80dp"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+
     tools:context=".BusList">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
         <Button
             android:id="@+id/taranga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
+            android:layout_marginTop="5dp"
             android:text="Taranga" />
 
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/baishakhi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Baishakhi" />
 
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/choitali"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Choitali" />
 
         <Button
             android:id="@+id/ishakha"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Ishakha" />
 
         <Button
             android:id="@+id/hemanto"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Hemanto" />
 
         <Button
             android:id="@+id/bosonto"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Bosonto" />
 
         <Button
             android:id="@+id/shrabon"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Shrabon" />
 
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Button" />
 
         <Button
             android:id="@+id/button14"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/g6"
             android:text="Button" />
 
-        <Button
-            android:id="@+id/button15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
 
-        <Button
-            android:id="@+id/button16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+
+
     </LinearLayout>
 </ScrollView>

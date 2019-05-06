@@ -2,21 +2,29 @@ package com.example.googlemap;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,6 +50,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -53,14 +65,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    String key;
+    boolean alarmOn,alarming;
+    TextView textView;
+    public static final String locationPref= "MyPrefsFile";
+    MediaPlayer player;
+    Handler mHandler;
     private GoogleMap mMap;
     private static final int LOCATION_REQUEST = 500;
     ArrayList<LatLng> listPoints;
     double lat=0.9920,lon=0.222;
 
     double l1=23.00,l2=90.343;
+    double arrLat=23.00, arrLon=90.343;
 
-
+    Button btn,stopAlarm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +88,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        textView = findViewById(R.id.textview);
+
+
+        btn = findViewById(R.id.btn);
+        stopAlarm = findViewById(R.id.StopAlarm);
+        Intent intent = getIntent();
+         key = intent.getExtras().getString("key");
+
+        if(key.equalsIgnoreCase("location")){
+            btn.setVisibility(View.INVISIBLE);
+            stopAlarm.setVisibility(View.INVISIBLE);
+            textView.setVisibility(View.INVISIBLE);
+        }
+        btn.setVisibility(View.INVISIBLE);
+        stopAlarm.setVisibility(View.INVISIBLE);
+
+        this.mHandler = new Handler();
+        m_Runnable.run();
+
         listPoints = new ArrayList<>();
     }
+
+    private final Runnable m_Runnable = new Runnable()
+    {
+        public void run()
+
+        {
+            getDbData();
+           // Toast.makeText(MapsActivity.this,"in runnable",Toast.LENGTH_SHORT).show();
+
+            MapsActivity.this.mHandler.postDelayed(m_Runnable,10000);
+        }
+
+    };
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -83,19 +138,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
         mMap.setMyLocationEnabled(true);
 
-      getDbData();
 
-        geoFence();
+
+            getDbData();
+           geoFence();
+
+
+
+
        // Toast.makeText(MapsActivity.this,"here is "+destination,Toast.LENGTH_SHORT).show();
 
 
 
 
-
-
-
-
     }
+
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        if(mMap != null){ //prevent crashing if the map doesn't exist yet (eg. on starting activity)
+            mMap.clear();
+
+            getDbData();
+
+            // add markers from database to the map
+        }
+    }
+
+
 
     public void geoFence(){
 
@@ -105,6 +178,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
+
+                btn.setVisibility(View.VISIBLE);
+
                 if(listPoints.size()==1){
                     listPoints.clear();
                     mMap.clear();
@@ -133,7 +209,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(markerOptions);
 
 
-                Button btn = findViewById(R.id.btn);
+
+
+                //btn.setVisibility(View.GONE);
+
+
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -144,7 +224,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                          l1 = myLocation.getLatitude();
                          l2 = myLocation.getLongitude();
 
-                         destinationAlert(l1,l2,lat,lon);
+                         if(key.equalsIgnoreCase("destination"))
+                         destinationAlert(lat,lon);
+                         else if(key.equalsIgnoreCase("arrival"))
+                             arrivalAlert(lat,lon);
 
 
                        // Toast.makeText(MapsActivity.this,"here"+l+" "+l2,Toast.LENGTH_LONG).show();
@@ -169,33 +252,191 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public void destinationAlert(double lat1,double lon1,double lat2,double lon2){
+    public void destinationAlert(double lat2,double lon2) {
 
-        float[] results = new float[1];
-        Location.distanceBetween( lat1,lon1, lat2, lon2, results);
-        float distanceInMeters = results[0];
-        boolean isWithin10km = distanceInMeters < 10000;
+
+
+        long l1, l2, l3, l4;
+
+
+       // l1 = (new Double(lat1)).longValue();
+        //l2 = (new Double(lon1)).longValue();
+        l3 = (new Double(lat2)).longValue();
+        l4 = (new Double(lon2)).longValue();
+
+
+        SharedPreferences.Editor editor = getSharedPreferences(locationPref, MODE_PRIVATE).edit();
+        //editor.putLong("myLat", l1);
+       // editor.putLong("myLon", l2);
+        editor.putLong("destLat", l3);
+        editor.putLong("destLon", l4);
+        editor.commit();
+        alarmOn = true;
+
+
+
+
+
+
+//        SharedPreferences.Editor editor = getSharedPreferences(locationPref, MODE_PRIVATE).edit();
+//        editor.putString("name", "Elena");
+//        editor.putInt("idName", 12);
+//        editor.commit();
+
+
+//        String input = "alarm";
+//
+//        Intent serviceIntent = new Intent(this, ExampleService.class);
+//        serviceIntent.putExtra("inputExtra",input);
+//
+//        startService(serviceIntent);
+//
+//        ContextCompat.startForegroundService(this, serviceIntent);
+
+
+        //startService(new Intent(this,ExampleService.class));
+
+
+    }
+
+/*
         if(isWithin10km)
         {
             Toast.makeText(MapsActivity.this,"here is 10 km",Toast.LENGTH_SHORT).show();
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
-
-
             //shared Preference Data
-
-
-
-
-
-
-
 
         }
 
         else
             Toast.makeText(MapsActivity.this,"here is no",Toast.LENGTH_SHORT).show();
+    }
+    */
+
+public void arrivalAlert(double lat2,double lon2){
+
+    long l3, l4;
+
+
+    // l1 = (new Double(lat1)).longValue();
+    //l2 = (new Double(lon1)).longValue();
+    l3 = (new Double(lat2)).longValue();
+    l4 = (new Double(lon2)).longValue();
+
+
+    SharedPreferences.Editor editor = getSharedPreferences(locationPref, MODE_PRIVATE).edit();
+    //editor.putLong("myLat", l1);
+    // editor.putLong("myLon", l2);
+    editor.putLong("arrLat", l3);
+    editor.putLong("arrLon", l4);
+    editor.commit();
+    alarmOn = true;
+
+}
+
+
+    public void startService(View v){
+
+        Toast.makeText(this,"yes started",Toast.LENGTH_SHORT).show();
+
+        String input = "alarm";
+
+        Intent serviceIntent = new Intent(this, ExampleService.class);
+        serviceIntent.putExtra("inputExtra",input);
+
+        startService(serviceIntent);
+
+        ContextCompat.startForegroundService(this, serviceIntent);
+
+
+    }
+
+    public void startAlarm(double mylat, double myLon){
+
+
+
+        long l1,l2;
+        alarming = true;
+        l1 = (new Double(mylat)).longValue();
+        l2 = (new Double(myLon)).longValue();
+        SharedPreferences prefs = getSharedPreferences(locationPref, MODE_PRIVATE);
+
+        // String name = prefs.getString("name", "No name defined");//"No name defined" is the default value.
+        final Long arrLat = prefs.getLong("arrLat", 0);
+        final Long arrLon = prefs.getLong("arrLon", 0);
+        final Long destLat = prefs.getLong("destLat", 0);
+        final Long destLon = prefs.getLong("destLon", 0);
+        float[] results = new float[1];
+        float[] results2 = new float[1];
+        Location.distanceBetween(l1, l2, destLat, destLon, results);
+        Location.distanceBetween(l1, l2, arrLat, arrLon, results2);
+        float distanceInMeters = results[0];
+        float distanceInMeters2 = results[0];
+        boolean isWithin10km = distanceInMeters < 10000;
+        boolean isWithin10km2 = distanceInMeters2 < 10000;
+
+
+
+//        float[] results = new float[1];
+//        Location.distanceBetween(myLat, myLon, destLat, destLon, results);
+//        float distanceInMeters = results[0];
+//        boolean isWithin10km = distanceInMeters < 10000;
+
+        if(isWithin10km) {
+
+            player= MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI);
+            player.setLooping(false);
+            player.start();
+            stopAlarm.setVisibility(View.VISIBLE);
+            btn.setVisibility(View.INVISIBLE);
+        }
+        else if(isWithin10km2) {
+
+            player= MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI);
+            player.setLooping(false);
+            player.start();
+            stopAlarm.setVisibility(View.VISIBLE);
+            btn.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    public void stopAlarm(){
+        player.stop();
+        alarmOn = false;
+        alarming = false;
+        btn.setVisibility(View.VISIBLE);
+        stopAlarm.setVisibility(View.INVISIBLE);
+
+
+        SharedPreferences.Editor editor = getSharedPreferences(locationPref, MODE_PRIVATE).edit();
+        //editor.putLong("myLat", l1);
+        // editor.putLong("myLon", l2);
+        if(key.equalsIgnoreCase("destination")){
+            editor.putLong("destLat", 0);
+            editor.putLong("destLon", 0);
+        }
+        else{
+            editor.putLong("arrLat", 0);
+            editor.putLong("arrLon", 0);
+        }
+
+        editor.commit();
+
+    }
+
+
+
+
+
+    public void stopService(View v) {
+//        Intent serviceIntent = new Intent(this, ExampleService.class);
+//       // serviceIntent.setAction(ExampleService.ACTION_STOP);
+//        stopService(serviceIntent);
+        stopAlarm();
+
     }
 
 
@@ -379,10 +620,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onResponse(Call<LatLon> call, Response<LatLon> response) {
 
 
+
                     LatLon latlonList = response.body();
                     LatLng myLatLng = new LatLng(latlonList.getLat(), latlonList.getLon());
 
-
+                    double dbLat = latlonList.getLat();
+                    double dbLong = latlonList.getLon();
                     MarkerOptions markerOptions = new MarkerOptions();
                     //markerOptions.position(listPoints.get(0));markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                     /// mMap.addMarker(markerOptions);
@@ -391,9 +634,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                     //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
                     markerOptions.title(latlonList.getLat() + " : " + latlonList.getLon());
-                    //mMap.clear();
+                    mMap.clear();
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(myLatLng));
-                    mMap.addMarker(markerOptions);
+
+                    if(alarmOn && alarming==false)startAlarm(dbLat,dbLong);
+                   // public void getAddress(double lat, double lng) {
+                        Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
+                        try {
+                            List<Address> addresses = geocoder.getFromLocation(latlonList.getLat(), latlonList.getLon(), 1);
+                            Address obj = addresses.get(0);
+                            String add = obj.getAddressLine(0);
+//                            add = add + "\n" + obj.getCountryName();
+//                            add = add + "\n" + obj.getCountryCode();
+//                            add = add + "\n" + obj.getAdminArea();
+//                            add = add + "\n" + obj.getPostalCode();
+//                            add = add + "\n" + obj.getSubAdminArea();
+                            add = add + "\n" + obj.getLocality();
+                            add = add + "\n" + obj.getSubThoroughfare();
+
+//                            markerOptions.showInfoWindow();
+
+                            mMap.addMarker(markerOptions.title(add)).showInfoWindow();
+
+
+                          //  Log.v("IGA", "Address" + add);
+                            // Toast.makeText(MapsActivity.this, "Address=>" + add,Toast.LENGTH_SHORT).show();
+
+
+                            // TennisAppActivity.showDialog(add);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                            //Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+
+
+
+
+
+
 
                     CircleOptions circleOptions = new CircleOptions()
                             .strokeColor(Color.BLACK) //Outer black border
@@ -401,7 +683,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .center(myLatLng) // the LatLng Object of your geofence location
                             .radius(500); // The radius (in meters) of your geofence
 
-                    Circle circle = mMap.addCircle(circleOptions);
+
+                   // Circle circle = mMap.addCircle(circleOptions);
 
                     //String url = getRequestURL(listPoints.get(0), listPoints.get(listPoints.size() - 1));
 

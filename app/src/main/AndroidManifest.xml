@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login"></activity>
+        <activity android:name=".CommitteeList"></activity>
+        <activity android:name=".TripList" />
+
         <activity android:name=".SignUp" />
         <activity android:name=".BusActivity" />
         <activity android:name=".BusList" />
@@ -35,7 +37,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".FirstActivity"
+            android:name=".Login"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".MyService" android:process=":my_service" />
+
+        <service
+            android:name=".MyService"
+            android:process=":my_service" />
+        <service android:name=".ExampleService" />
     </application>
 
 </manifest>

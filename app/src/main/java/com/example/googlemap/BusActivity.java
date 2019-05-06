@@ -47,25 +47,50 @@ public class BusActivity extends AppCompatActivity {
                     else if (finalI==0) openTriplist();
                     else if (finalI==2) openCommitteelist();
                     else if (finalI==3) openMapForDestinationAlarm();
-                    else   openMapForBusArrivalAlarm();
+                    else  if(finalI==4) openMapForBusArrivalAlarm();
+                    else openNotification();
 
                 }
             });
         }
     }
 
+    private void openNotification(){
+
+    }
+
     private void openMapForBusArrivalAlarm() {
+
+        String key = "arrival";
+        Intent intent = new Intent(this,MapsActivity.class);
+        intent.putExtra("key",key);
+        startActivity(intent);
     }
     private void openMapForDestinationAlarm(){
+
+        String key = "destination";
+        Intent intent = new Intent(this,MapsActivity.class);
+        intent.putExtra("key",key);
+        startActivity(intent);
+
+
     }
     private void openCommitteelist() {
+
+        Intent intent = new Intent(this, CommitteeList.class);
+        startActivity(intent);
+
     }
     private void openTriplist() {
-        layoutForTrips = findViewById(R.id.layout);
-        ImageView imageView = new ImageView(BusActivity.this);
-        imageView.setImageResource(R.drawable.bg1);
+//        layoutForTrips = findViewById(R.id.layout);
+//        ImageView imageView = new ImageView(BusActivity.this);
+//        imageView.setImageResource(R.drawable.bg1);
 
-        addView(imageView);
+       // addView(imageView);
+
+        Intent intent = new Intent(this, TripList.class);
+        startActivity(intent);
+
 
     }
 
@@ -78,7 +103,10 @@ public class BusActivity extends AppCompatActivity {
     }
 
     public void openMap(){
+
+        String key = "location";
         Intent intent = new Intent(this,MapsActivity.class);
+        intent.putExtra("key",key);
         startActivity(intent);
     }
 

@@ -21,9 +21,11 @@ public class Login extends AppCompatActivity {
 
 
 
+    private Button login;
+    private Button signUp;
     private EditText userName;
     private EditText pswd;
-    private Button login;
+
     boolean flag;
 
     @Override
@@ -38,6 +40,8 @@ public class Login extends AppCompatActivity {
         pswd = (EditText) findViewById(R.id.pswd3);
         userName = (EditText) findViewById(R.id.userName3);
         login =(Button)  findViewById(R.id.login);
+        signUp = (Button) findViewById(R.id.signUp);
+
 
 
 
@@ -54,7 +58,18 @@ public class Login extends AppCompatActivity {
 
                 LoginCred loginCred = new LoginCred(UserName,Pswd);
 
+                Toast.makeText(Login.this,"user name:"+UserName+" pass:"+ Pswd,Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(Login.this,"trying",Toast.LENGTH_SHORT).show();
                 checkValidity(loginCred);
+
+            }
+        });
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSignUpPage();
+
 
             }
         });
@@ -62,8 +77,14 @@ public class Login extends AppCompatActivity {
 
 
 
-
     }
+
+    public void openSignUpPage()
+    {
+        Intent intent2 = new Intent(this,SignUp.class);
+        startActivity(intent2);
+    }
+
 
 
     public void openBusList(){
