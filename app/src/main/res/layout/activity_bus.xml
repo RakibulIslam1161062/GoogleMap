@@ -38,15 +38,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="@color/red">
+
+        android:background="@color/layoutM">
 
         <TextView
             android:id="@+id/textGrid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="BUS Features"
-            android:textColor="@android:color/darker_gray"
+            android:text="Bus Features"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textSize="34sp" />
     </RelativeLayout>
 
@@ -60,23 +63,23 @@
         android:columnOrderPreserved="false"
         android:padding="14dp"
 
-        android:background="@color/g5"
+        android:background="@color/layoutM"
         android:rowCount="3">
 
 
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="9dp"
+            app:cardElevation="0dp">
 
 
 
@@ -85,9 +88,9 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_gravity="bottom|end"
                 android:layout_margin="16dp"
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
 
                 android:orientation="vertical">
 
@@ -99,18 +102,10 @@
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/inde1x" />
                     -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Trips"
-                    android:textSize="30dp"
-                    android:paddingTop="30dp"
-
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/tripd"/>
 
 
             </LinearLayout>
@@ -118,17 +113,17 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="9dp"
             app:cardElevation="8dp">
 
 
@@ -140,7 +135,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
 
                 android:orientation="vertical">
 
@@ -153,17 +148,11 @@
                     android:src="@drawable/inde1x" />
                     -->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Instant Location"
-                    android:textSize="20dp"
-                    android:paddingTop="30dp"
-
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/instant"
+                   />
 
 
             </LinearLayout>
@@ -171,18 +160,18 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="9dp"
+            app:cardElevation="0dp">
 
 
 
@@ -194,7 +183,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
 
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
                 android:orientation="vertical">
 
 
@@ -205,36 +194,28 @@
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/inde1x" />
                     -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Committee "
-                    android:textSize="20dp"
-                    android:paddingTop="15dp"
-
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/committee"/>
 
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="9dp"
+            app:cardElevation="0dp">
 
 
 
@@ -245,7 +226,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
 
                 android:orientation="vertical">
 
@@ -258,35 +239,29 @@
                     android:src="@drawable/inde1x" />
                     -->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Destination Alarm"
-                    android:textSize="16dp"
-                    android:paddingTop="15dp"
-
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/destination"
+                   />
 
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="9dp"
+            app:cardElevation="0dp">
 
 
 
@@ -297,7 +272,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
 
                 android:orientation="vertical">
 
@@ -309,35 +284,27 @@
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/inde1x" />
                     -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Bus Arrival Alarm"
-                    android:textSize="18dp"
-                    android:paddingTop="30dp"
-
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/busarr"/>
 
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/g6"
+            app:cardBackgroundColor="@color/white"
 
 
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="9dp"
             app:cardElevation="8dp">
 
 
@@ -349,7 +316,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
-                android:background="@color/g3"
+                android:background="@drawable/bg_round"
 
                 android:orientation="vertical">
 
@@ -362,17 +329,12 @@
                     android:src="@drawable/inde1x" />
                     -->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:text="Notification"
-                    android:textSize="18dp"
-                    android:paddingTop="30dp"
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
 
-                    android:textColor="@android:color/darker_gray"
-
-                    android:textStyle="bold" />
+                   android:src="@drawable/notification"
+                   />
 
 
             </LinearLayout>

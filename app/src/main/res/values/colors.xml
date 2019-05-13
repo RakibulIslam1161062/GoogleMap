@@ -13,6 +13,11 @@
     <color name="g7">  #1e0c01</color>
     <color name="startRed">#EB3349</color>
     <color name="endRed">#F45C43</color>
+    <color name="white">#ffffff</color>
+    <color name="darkgray">#6c6c6c</color>
+    <color name="layoutM">#FF1744</color>
+
+
 
 
 </resources>

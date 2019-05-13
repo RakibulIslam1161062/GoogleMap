@@ -23,7 +23,7 @@ public class BusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
 
-
+        this.getSupportActionBar().hide();
 
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);

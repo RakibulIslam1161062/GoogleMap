@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
 
 
 
+        this.getSupportActionBar().hide();
 
         pswd = (EditText) findViewById(R.id.pswd3);
         userName = (EditText) findViewById(R.id.userName3);
@@ -71,6 +72,8 @@ public class Login extends AppCompatActivity {
                 openSignUpPage();
 
 
+
+
             }
         });
 
@@ -83,13 +86,17 @@ public class Login extends AppCompatActivity {
     {
         Intent intent2 = new Intent(this,SignUp.class);
         startActivity(intent2);
+
     }
 
 
 
     public void openBusList(){
-        Intent intent = new Intent(this,BusList.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this,BusList.class);
+//        startActivity(intent);
+
+        Intent intent2 = new Intent(this,Home.class);
+        startActivity(intent2);
     }
 
     public void  checkValidity(LoginCred loginCred)

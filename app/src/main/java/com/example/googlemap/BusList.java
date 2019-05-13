@@ -15,6 +15,7 @@ public class BusList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_list);
 
+        this.getSupportActionBar().hide();
         taranga= findViewById(R.id.taranga);
         taranga.setOnClickListener(new View.OnClickListener() {
             @Override

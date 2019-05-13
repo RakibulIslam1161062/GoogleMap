@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/trans"
+
+        android:title="DU Website" />
+    <item
+        android:id="@+id/food"
+
+        android:title="Food"
+
+        />
+    <item
+        android:id="@+id/emerg"
+
+        android:iconTint="@color/white"
+        android:title="Emergency Call" />
+
+    <item android:id="@+id/settings" android:title="Setting"
+
+        android:iconTint="@color/colorPrimary"
+        />
+
+    <item android:id="@+id/logout" android:title="Log Out"
+
+        />
+
+</menu>

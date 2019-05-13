@@ -20,7 +20,8 @@
     <string name="btSignUp">Sign Up</string>
     <string name="forget_password">Forget your Password?</string>
     <string name="check_remember_me">Remember me</string>
-
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 
 </resources>

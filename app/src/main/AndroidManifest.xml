@@ -12,16 +12,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CommitteeList"></activity>
-        <activity android:name=".TripList" />
-
-        <activity android:name=".SignUp" />
+        <activity android:name=".NavActivity"></activity>
         <activity android:name=".BusActivity" />
+        <activity android:name=".CommitteeList" />
+        <activity android:name=".TripList" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".Home" />
         <activity android:name=".BusList" />
         <activity android:name=".MapsActivity" />
         <!--
@@ -38,7 +39,7 @@
 
         <activity
             android:name=".Login"
-            android:label="@string/title_activity_maps">
+            android:label="DU Laal Bus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

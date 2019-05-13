@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/g3"
+    android:background="@drawable/bg_round"
     android:padding="80dp"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -20,16 +20,21 @@
             android:id="@+id/taranga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:layout_marginTop="5dp"
-            android:text="Taranga" />
+
+            android:text="Taranga"
+            android:textStyle="normal"
+            android:textColorHighlight="@color/white"
+
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
         <Button
             android:layout_marginTop="10dp"
             android:id="@+id/baishakhi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Baishakhi" />
 
         <Button
@@ -37,7 +42,7 @@
             android:id="@+id/choitali"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Choitali" />
 
         <Button
@@ -45,7 +50,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Ishakha" />
 
         <Button
@@ -53,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Hemanto" />
 
         <Button
@@ -61,7 +66,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Bosonto" />
 
         <Button
@@ -69,7 +74,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Shrabon" />
 
         <Button
@@ -77,7 +82,7 @@
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Button" />
 
         <Button
@@ -85,7 +90,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/g6"
+            android:background="@color/white"
             android:text="Button" />
 
 
