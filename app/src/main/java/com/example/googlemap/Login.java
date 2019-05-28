@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,6 +27,10 @@ public class Login extends AppCompatActivity {
     private Button signUp;
     private EditText userName;
     private EditText pswd;
+    private CheckBox satView;
+    private boolean remember= false;
+    private boolean serverCheck= false;
+    public static final String loginCheck= "MyPrefsFile2";
 
     boolean flag;
 
@@ -38,10 +44,39 @@ public class Login extends AppCompatActivity {
 
         this.getSupportActionBar().hide();
 
+
+        SharedPreferences prefs = getSharedPreferences(loginCheck, MODE_PRIVATE);
+        remember = prefs.getBoolean("remember", false);
+        serverCheck =  prefs.getBoolean("serverCheck", false);
+       // Toast.makeText(Login.this,remember+ " "+serverCheck,Toast.LENGTH_SHORT).show();
+
+
+
+        if(remember == true && serverCheck == true) openBusList();
+
         pswd = (EditText) findViewById(R.id.pswd3);
         userName = (EditText) findViewById(R.id.userName3);
         login =(Button)  findViewById(R.id.login);
         signUp = (Button) findViewById(R.id.signUp);
+
+        satView = (CheckBox)findViewById(R.id.remember);
+        satView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CompoundButton) view).isChecked()){
+
+
+                    SharedPreferences.Editor editor = getSharedPreferences(loginCheck, MODE_PRIVATE).edit();
+                    editor.putBoolean("remember", true);
+                    editor.commit();
+
+
+
+                } else {
+                    ///System.out.println("Un-Checked");
+                }
+            }
+        });
 
 
 
@@ -59,7 +94,7 @@ public class Login extends AppCompatActivity {
 
                 LoginCred loginCred = new LoginCred(UserName,Pswd);
 
-                Toast.makeText(Login.this,"user name:"+UserName+" pass:"+ Pswd,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Login.this,"user name:"+UserName+" pass:"+ Pswd,Toast.LENGTH_SHORT).show();
               //  Toast.makeText(Login.this,"trying",Toast.LENGTH_SHORT).show();
                 checkValidity(loginCred);
 
@@ -118,15 +153,24 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<LoginCred> call, Response<LoginCred> response) {
                // Toast.makeText(Login.this, " Yes Yes !right"+response.body().getUserName(),Toast.LENGTH_SHORT).show();
                 if(response.body().getUserName().equals("invalid") && response.body().getPassword().equals("invalid"))
-                    Toast.makeText(Login.this, "Invalid username of password ",Toast.LENGTH_SHORT).show();
-                else openBusList();
+                    Toast.makeText(Login.this, "Invalid username or password ",Toast.LENGTH_SHORT).show();
+                else {
+
+                    SharedPreferences.Editor editor = getSharedPreferences(loginCheck, MODE_PRIVATE).edit();
+                    editor.putBoolean("serverCheck", true);
+                    editor.putString("userName",loginCred.getUserName());
+                    editor.putString("password",loginCred.getPassword());
+                    editor.commit();
+
+                    openBusList();
+                }
 
 
             }
 
             @Override
             public void onFailure(Call<LoginCred> call, Throwable t) {
-                Toast.makeText(Login.this,"trying",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this,"Check Internet Connection",Toast.LENGTH_SHORT).show();
 
             }
         });

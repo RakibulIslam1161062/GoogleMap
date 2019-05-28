@@ -11,7 +11,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="650dp"
-        android:src="@drawable/taranga"
+        android:src="@drawable/comm1"
         android:id="@+id/up"
         />
 

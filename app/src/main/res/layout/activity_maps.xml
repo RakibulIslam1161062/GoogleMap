@@ -19,21 +19,29 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
 
         android:layout_marginTop="450dp"
+        android:background="@drawable/button"
 
-        android:text="Confirm" />
+        android:text="Confirm"
+        android:textColor="#ffffff"
+        />
 
 
     <Button
         android:id="@+id/StopAlarm"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
 
         android:layout_marginTop="450dp"
+        android:background="@drawable/button"
+
         android:onClick="stopService"
+        android:textColor="#ffffff"
         android:text="StopAlarm" />
 
     <TextView

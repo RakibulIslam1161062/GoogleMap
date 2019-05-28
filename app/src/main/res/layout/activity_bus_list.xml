@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_round"
+    android:background="@drawable/bus_list"
     android:padding="80dp"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
 
         android:orientation="vertical">
+
 
         <Button
             android:id="@+id/taranga"
@@ -87,12 +88,11 @@
 
         <Button
             android:id="@+id/button14"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
             android:text="Button" />
-
 
 
 

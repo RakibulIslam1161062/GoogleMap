@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bus_list"
     android:orientation="vertical"
     tools:context=".Login">
 
@@ -21,7 +21,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="50dp"
-            android:src="@drawable/logo1" />
+            android:src="@drawable/logo" />
 
         <EditText
             android:id="@+id/userName3"
@@ -70,6 +70,7 @@
             android:textSize="16sp"
             android:text="@string/check_remember_me"
             android:padding="8dp"
+            android:id="@+id/remember"
             android:layout_gravity="start"/>
 
         <Button

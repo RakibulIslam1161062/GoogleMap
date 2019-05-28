@@ -42,7 +42,7 @@ public class BusActivity extends AppCompatActivity {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(BusActivity.this,"click on grid"+ finalI,Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(BusActivity.this,"click on grid"+ finalI,Toast.LENGTH_SHORT).show();
                     if(finalI==1)  openMap();
                     else if (finalI==0) openTriplist();
                     else if (finalI==2) openCommitteelist();
@@ -57,6 +57,9 @@ public class BusActivity extends AppCompatActivity {
 
     private void openNotification(){
 
+
+        Intent intent = new Intent(this, Notification.class);
+        startActivity(intent);
     }
 
     private void openMapForBusArrivalAlarm() {

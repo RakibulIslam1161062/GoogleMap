@@ -163,7 +163,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(mMap != null){ //prevent crashing if the map doesn't exist yet (eg. on starting activity)
             mMap.clear();
 
-            getDbData();
+           // getDbData();
 
             // add markers from database to the map
         }
@@ -229,6 +229,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                          destinationAlert(lat,lon);
                          else if(key.equalsIgnoreCase("arrival"))
                              arrivalAlert(lat,lon);
+
+                        btn.setVisibility(View.GONE);
 
 
                        // Toast.makeText(MapsActivity.this,"here"+l+" "+l2,Toast.LENGTH_LONG).show();
@@ -374,13 +376,13 @@ public void arrivalAlert(double lat2,double lon2){
         Location.distanceBetween(l1, l2, destLat, destLon, results);
         Location.distanceBetween(l1, l2, arrLat, arrLon, results2);
         float distanceInMeters = results[0];
-        float distanceInMeters2 = results[0];
-        boolean isWithin10km = distanceInMeters < 10000;
-        boolean isWithin10km2 = distanceInMeters2 < 10000;
+        float distanceInMeters2 = results2[0];
+        boolean isWithin10km = distanceInMeters < 1000;
+        boolean isWithin10km2 = distanceInMeters2 < 1000;
 
 
 
-//        float[] results = new float[1];
+//        float[] results = new float[1];s
 //        Location.distanceBetween(myLat, myLon, destLat, destLon, results);
 //        float distanceInMeters = results[0];
 //        boolean isWithin10km = distanceInMeters < 10000;
@@ -408,7 +410,7 @@ public void arrivalAlert(double lat2,double lon2){
         player.stop();
         alarmOn = false;
         alarming = false;
-        btn.setVisibility(View.VISIBLE);
+       // btn.setVisibility(View.VISIBLE);
         stopAlarm.setVisibility(View.INVISIBLE);
 
 
@@ -632,7 +634,7 @@ public void arrivalAlert(double lat2,double lon2){
                     /// mMap.addMarker(markerOptions);
 
                     markerOptions.position(myLatLng);
-                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon));
                     //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
                     markerOptions.title(latlonList.getLat() + " : " + latlonList.getLon());
                     mMap.clear();
@@ -691,7 +693,7 @@ public void arrivalAlert(double lat2,double lon2){
 
                     //TaskRequestDirections taskRequestDirections = new TaskRequestDirections();
                     //taskRequestDirections.execute(url);
-                    Toast.makeText(MapsActivity.this, "You are right" + latlonList.getLat(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MapsActivity.this, "You are right" + latlonList.getLat(), Toast.LENGTH_SHORT).show();
 
 
                 }

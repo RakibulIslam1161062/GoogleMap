@@ -1,10 +1,14 @@
 package com.example.googlemap;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+import static com.example.googlemap.Login.loginCheck;
 
 public class Home extends NavActivity {
 
@@ -40,6 +45,12 @@ public class Home extends NavActivity {
         setContentView(R.layout.activity_home);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreateDrawer();
+
+
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setIcon(R.drawable.red3);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2756a3")));
 
 
 
@@ -105,24 +116,41 @@ public class Home extends NavActivity {
 
                 case R.id.trans: {
                     //do somthing
-                    Toast.makeText(Home.this,"lol",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse("http://www.du.ac.bd"));
+                    startActivity(intent);
                     break;
                 }
-                case R.id.food: {
 
-                    Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
-                }
 
                 case R.id.emerg: {
 
-
-                    Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String p = "tel:999"  ;
+                    i.setData(Uri.parse(p));
+                    startActivity(i);
+                    break;
+                   // Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
                 }
                 case R.id.settings: {
-                    Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
+
+                    Intent intent2 = new Intent(Home.this,ResetPass.class);
+                    startActivity(intent2);
+
+                    break;
                 }
                 case R.id.logout: {
-                    Toast.makeText(Home.this,"lolo",Toast.LENGTH_SHORT).show();
+
+                    SharedPreferences.Editor editor = getSharedPreferences(loginCheck, MODE_PRIVATE).edit();
+                    editor.putBoolean("serverCheck", false);
+                    editor.commit();
+
+                    Intent intent2 = new Intent(Home.this,Login.class);
+                    startActivity(intent2);
+                    break;
                 }
             }
             //close navigation drawer

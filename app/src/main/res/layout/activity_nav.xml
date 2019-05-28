@@ -4,46 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e0c796"
+
     android:id="@+id/drawer"
     tools:context=".NavActivity">
+
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_round"
+        android:background="#3f4ed3"
 
         >
+
 
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Welcome!"
-          android:textSize="60dp"
-          android:textStyle="normal"
+          android:textSize="70dp"
+          android:textStyle="bold"
           android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
           android:textAlignment="center"
 
           />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DU Laal Bus"
-            android:layout_marginTop="80dp"
-            android:textAlignment="center"
-            android:textSize="50dp"
-            android:textColor="@color/white"
-            />
-
-
 
         <ImageView
 
             android:id="@+id/bus2"
-            android:layout_width="210dp"
+            android:layout_width="320dp"
             android:layout_height="200dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="220dp"
             android:src="@drawable/logo"
 
             />
@@ -51,24 +46,12 @@
         <Button
             android:layout_width="160dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="235dp"
-            android:layout_marginTop="300dp"
-            android:background="@drawable/button"
-            android:text="Complain"
-
-            android:textSize="20dp"
-
-            />
-        <Button
-            android:layout_width="160dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="410dp"
-            android:layout_marginLeft="235dp"
-            android:background="@drawable/button"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="490dp"
+            android:background="#263f59"
             android:text="About App"
+            android:textColor="#ffffff"
             android:textSize="20dp"
-            android:textColor="@color/g4"
-
 
 
             />
@@ -77,11 +60,10 @@
             android:id="@+id/clock"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-
+            android:layout_marginTop="100dp"
             android:gravity="center"
-            android:textColor="@color/g4"
-            android:textSize="40sp"
+            android:textColor="#8cad61"
+            android:textSize="50dp"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:visibility="visible" />
@@ -99,8 +81,8 @@
         app:headerLayout="@layout/header"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        app:itemTextColor="@color/darkgray"
+        android:background="#2f405b"
+        app:itemTextColor="#c0d8e0"
         app:itemIconTint="@color/darkgray"
         android:id="@+id/nav_view"
         app:menu="@menu/drawermenu"
@@ -111,5 +93,6 @@
 
 
     </android.support.design.widget.NavigationView>
+
 
 </android.support.v4.widget.DrawerLayout>

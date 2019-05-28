@@ -5,9 +5,16 @@
     android:id="@+id/submit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bus_list"
     android:orientation="vertical"
     tools:context=".SignUp">
+
+    <ImageView
+        android:layout_width="214dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+       android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
 
     <EditText
         android:id="@+id/name"
@@ -20,7 +27,7 @@
         android:inputType="textPersonName"
        android:hint="Name"
         android:drawablePadding="12dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:ems="10"
@@ -117,7 +124,7 @@
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_signup"
         android:padding="16dp"

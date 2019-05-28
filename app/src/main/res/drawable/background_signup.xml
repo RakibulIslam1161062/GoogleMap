@@ -15,6 +15,6 @@
         android:bottom="2dp" />
 
     <solid
-        android:color="#DA1345" />
+        android:color="#504851" />
 
 </shape>

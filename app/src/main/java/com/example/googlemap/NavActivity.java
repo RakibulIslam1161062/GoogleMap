@@ -1,6 +1,7 @@
 package com.example.googlemap;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import static com.example.googlemap.Login.loginCheck;
 
 public class NavActivity extends AppCompatActivity {
 
@@ -81,12 +84,8 @@ public class NavActivity extends AppCompatActivity {
 
                             case R.id.trans: {
                                 //do somthing
-                                Toast.makeText(NavActivity.this,"lol",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(NavActivity.this, "lol", Toast.LENGTH_SHORT).show();
                                 break;
-                            }
-                            case R.id.food: {
-
-                                Toast.makeText(NavActivity.this,"lolo",Toast.LENGTH_SHORT).show();
                             }
 
                             case R.id.emerg: {
@@ -96,6 +95,9 @@ public class NavActivity extends AppCompatActivity {
                             }
                             case R.id.settings: {
                                 Toast.makeText(NavActivity.this,"lolo",Toast.LENGTH_SHORT).show();
+
+
+
                             }
                             case R.id.logout: {
                                 Toast.makeText(NavActivity.this,"lolo",Toast.LENGTH_SHORT).show();

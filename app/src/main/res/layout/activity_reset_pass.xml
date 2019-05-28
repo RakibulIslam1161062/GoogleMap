@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bus_list"
+    tools:context=".ResetPass">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Reset Password"
+    android:textSize="35dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginTop="100dp"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+
+    />
+
+<EditText
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/oldPass"
+    android:layout_marginLeft="40dp"
+    android:hint="Old Password"
+    android:inputType="textPassword"
+    android:textColor="#ffffff"
+    android:textColorHint="#ffffff"
+    android:layout_marginTop="200dp"
+    />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/newPass"
+        android:layout_marginLeft="40dp"
+        android:hint="New Password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="250dp"
+        />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/rNewPass"
+        android:hint="Re-type New Password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="300dp"
+        />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="120dp"
+        android:textColor="#ffffff"
+        android:text="Confirm"
+        android:id="@+id/confirm"
+        />
+
+
+
+</RelativeLayout>

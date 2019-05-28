@@ -40,6 +40,8 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        this.getSupportActionBar().hide();
+
         name = (EditText) findViewById(R.id.name);
         dept = (EditText) findViewById(R.id.dept);
         userName=(EditText)  findViewById(R.id.userName);
@@ -61,7 +63,11 @@ public class SignUp extends AppCompatActivity {
 
 
                // Toast.makeText(SignUp.this,"Check your Password"+Name,Toast.LENGTH_SHORT).show();
-                if(!Pswd.equals(Pswd2))
+
+                if(Name.equals("") || Dept.equals("") || UserName.equals("")){
+                    Toast.makeText(SignUp.this,"Fill up all the required fields",Toast.LENGTH_LONG).show();
+                }
+                else if(!Pswd.equals(Pswd2))
                 {
                     Toast.makeText(SignUp.this,"Check your Password",Toast.LENGTH_SHORT).show();
 

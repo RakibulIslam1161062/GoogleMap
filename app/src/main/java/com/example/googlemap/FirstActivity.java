@@ -59,10 +59,6 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
-
                // openMapActivity();
                 gotoLoginPage();
                 //openBusList();
